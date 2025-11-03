@@ -45,8 +45,8 @@ def funzione_sensori():
             print("rilevato sinistro")
 
 
-#robot=AlphaBot.AlphaBot()
-robot=AlphaBot()
+robot=AlphaBot.AlphaBot()
+#robot=AlphaBot()
 robot.stop()
 funzione_sensori()
 
