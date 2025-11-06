@@ -15,7 +15,7 @@ listener.start()  # attivo in backgrund l'ascolto dei tasti premuti
 
 #ho sempre una lista che contiene i tasti che sto premento, analizzando quella lista posso capire cosa mandare al server, nel caso la lista sia vuota mando stop
 
-SERVER_ADD=("192.168.1.15",4000)  #.1.123
+SERVER_ADD=("192.168.1.123",4001)  #.1.123
 BUFFER=4096
 
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
