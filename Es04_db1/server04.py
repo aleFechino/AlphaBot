@@ -24,7 +24,7 @@ import time
 import RPi.GPIO as GPIO
 import sqlite3
 
-SERVER_ADD=("0.0.0.0",4001)
+SERVER_ADD=("0.0.0.0",4000)
 BUFFER=1024
 N=1
 DB="./db1_comandi.db"
@@ -75,16 +75,22 @@ s.bind(SERVER_ADD)
 
 s.listen(N)
 
+previous_cmd=''
+
 conn, address=s.accept()
 try: 
     while True:     #nel while true ora leggo solo il messaggio e stampo la funzione di conseguenza.   
+        time.sleep(0.1)
         message=conn.recv(BUFFER).decode()
         listCommand=message.split('-')
         key = listCommand[-2]
-        if key in diz_command_wasd:    
-            #print(f'dentro if {key}')    
-             com = diz_command_wasd[key]
-             diz_command[com]()
+        print(message)
+        if key in diz_command_wasd:     #finche non arriva nuova sleep eseguo la stessa
+            #print(f'dentro if {key}')
+            if key != previous_cmd or key == 'stop':
+                com = diz_command_wasd[key]
+                diz_command[com]()
+                previous_cmd=key
         else:
             #print(f'fuori if {key}')    
              comands = access_DB(DB, key)
