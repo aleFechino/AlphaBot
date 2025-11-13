@@ -17,7 +17,7 @@
 #     def stop(self):
 #         print('stop')
 
-#import AlphaBot 
+import AlphaBot 
 import socket
 import time
 
@@ -25,8 +25,8 @@ SERVER_ADD=("0.0.0.0",4000)
 BUFFER=4096                                     #DA DIMINUIREEEE, PROVARE!!!
 N=1 #num massimo
 
-robot=AlphaBot.AlphaBot()
-#robot=AlphaBot()
+#robot=AlphaBot.AlphaBot()
+robot=AlphaBot()
 robot.stop()
 
 diz_command={"forward":robot.forward, 

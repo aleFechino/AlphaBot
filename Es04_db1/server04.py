@@ -52,7 +52,7 @@ def run_db(comands):
         move=com.split(",")
         print(move)
         diz_command[move[0]]()
-        time.sleep(int(move[1]))
+        time.sleep(float(move[1]))
 
 robot=AlphaBot.AlphaBot()
 #robot=AlphaBot()
@@ -86,14 +86,14 @@ try:
         key = listCommand[-2]
         print(message)
         if key in diz_command_wasd:     #finche non arriva nuova sleep eseguo la stessa
-            #print(f'dentro if {key}')
+            print(f'dentro if {key}')
             if key != previous_cmd or key == 'stop':
                 com = diz_command_wasd[key]
                 diz_command[com]()
                 previous_cmd=key
         else:
-            #print(f'fuori if {key}')    
-             comands = access_DB(DB, key)
-             run_db(comands)
+            print(f'fuori if {key}')    
+            comands = access_DB(DB, key)
+            run_db(comands)
 except KeyboardInterrupt:
     print('interrotto')
